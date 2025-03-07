@@ -26,6 +26,10 @@ print('. '*20)
 for line in f:
     print(line, end='')
 f.close()
+print()
 
-
-
+f = open(file_name)
+print(next(f))
+print(next(f))
+print(next(f))
+f.close()
