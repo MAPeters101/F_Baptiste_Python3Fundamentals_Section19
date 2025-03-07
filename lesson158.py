@@ -34,5 +34,14 @@ with open('test.csv') as f:
 print()
 
 
+data = ['line 1', 'line 2', 'line 3']
+with open('test.csv', 'w') as f:
+    f.write('\n'.join(data))
+
+with open('test.csv') as f:
+    print(f.readlines())
+print()
+
+
 
 
