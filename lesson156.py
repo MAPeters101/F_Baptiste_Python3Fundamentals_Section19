@@ -14,8 +14,18 @@ print(data)
 print('-'*80)
 
 
+f = open(file_name)
+for line in f:
+    print(line)
+print('- '*20)
 
-
+f = open(file_name)
+for line in f:
+    print(line, end='')
+print('. '*20)
+for line in f:
+    print(line, end='')
+f.close()
 
 
 
