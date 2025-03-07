@@ -33,3 +33,18 @@ print(next(f))
 print(next(f))
 print(next(f))
 f.close()
+print()
+
+
+f = open(file_name)
+try:
+    for row in f:
+        print(row)
+        raise ValueError('forcing an exception...')
+finally:
+    print('closing file...')
+    f.close()
+    print(f.closed)
+
+
+
