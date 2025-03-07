@@ -59,3 +59,21 @@ with open(file_name) as f:
 
 with open(file_name) as f:
     print(f.readlines())
+print('='*80)
+
+
+with open(file_name) as f:
+    headers = next(f)
+
+    for row in f:
+        row = row.strip()
+        date, value_str = row.split(',')
+
+        print(date, value_str)
+
+print('!'*80)
+
+
+
+
+
