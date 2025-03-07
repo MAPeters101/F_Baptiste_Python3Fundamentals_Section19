@@ -5,6 +5,12 @@ f.close()
 
 with open('test.csv') as f:
     print(f.readlines())
+print()
 
 
+with open('test.csv', 'w') as f:
+    f.write('abc\n')
+    f.write('123456\n')
 
+with open('test.csv') as f:
+    print(f.readlines())
