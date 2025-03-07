@@ -50,3 +50,12 @@ print()
 with open(file_name) as f:
     print(f.closed)
 print(f.closed)
+print('='*80)
+
+
+with open(file_name) as f:
+    for line in f:
+        print(line)
+
+with open(file_name) as f:
+    print(f.readlines())
