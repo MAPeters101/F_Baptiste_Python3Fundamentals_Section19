@@ -14,3 +14,15 @@ with open('test.csv', 'w') as f:
 
 with open('test.csv') as f:
     print(f.readlines())
+print('-'*80)
+
+
+data = ['line 1', 'line 2', 'line 3']
+with open('test.csv', 'w') as f:
+    f.writelines(data)
+
+with open('test.csv') as f:
+    print(f.readlines())
+
+
+
