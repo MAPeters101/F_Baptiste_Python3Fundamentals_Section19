@@ -36,15 +36,17 @@ f.close()
 print()
 
 
-f = open(file_name)
-try:
-    for row in f:
-        print(row)
-        raise ValueError('forcing an exception...')
-finally:
-    print('closing file...')
-    f.close()
+# f = open(file_name)
+# try:
+#     for row in f:
+#         print(row)
+#         raise ValueError('forcing an exception...')
+# finally:
+#     print('closing file...')
+#     f.close()
+#     print(f.closed)
+
+
+with open(file_name) as f:
     print(f.closed)
-
-
-
+print(f.closed)
