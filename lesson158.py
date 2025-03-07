@@ -23,6 +23,16 @@ with open('test.csv', 'w') as f:
 
 with open('test.csv') as f:
     print(f.readlines())
+print()
+
+data = ['line 1\n', 'line 2\n', 'line 3\n']
+with open('test.csv', 'w') as f:
+    f.writelines(data)
+
+with open('test.csv') as f:
+    print(f.readlines())
+print()
+
 
 
 
