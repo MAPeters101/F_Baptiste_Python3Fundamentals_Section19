@@ -67,5 +67,27 @@ with open('open_not_exists.txt',) as f:
 print('='*80)
 
 
+source_file = 'DEXUSEU.csv'
+with open(source_file) as f:
+    for _ in range(5):
+        print(next(f).strip())
+target_file = 'output.csv'
+with open(source_file) as f:
+    data = f.readlines()
+print(data[0:5])
+del data[0]
+print(data[0:5])
+data = [line.strip() for line in data]
+print(data[0:5])
+data = [line.split(',') for line in data]
+print(data[0:5])
+
+def split_date(dt_str):
+    return dt_str[:4], dt_str[5:7], dt_str[8:]
+print(split_date('2015-04-09'))
+year, month, day = split_date('2015-04-09')
+print(year, month, day)
+
+
 
 
