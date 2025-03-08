@@ -88,10 +88,21 @@ print(split_date('2015-04-09'))
 year, month, day = split_date('2015-04-09')
 print(year, month, day)
 
+# def transform_row_for_output(row):
+#     row = row.strip()
+#     dt_str, rate = row.split(',')
+#     year, month, day = split_date(dt_str)
+#     result = ','.join([year,month,day,rate])
+#     result += '\n'
+#     return result
+# print(transform_row_for_output('2015-04-03,1.0990\n'))
+
 def transform_row_for_output(row):
     row = row.strip()
     dt_str, rate = row.split(',')
     year, month, day = split_date(dt_str)
+    month = str(int(month))
+    day = str(int(day))
     result = ','.join([year,month,day,rate])
     result += '\n'
     return result
