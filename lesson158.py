@@ -190,3 +190,15 @@ with open(target_file) as f:
         print(row.strip())
 print('=-'*40)
 
+
+def transform_file(source_file, target_file):
+    with open(source_file) as source:
+        with open(target_file, 'w') as target:
+            next(source)
+            target.write('YEAR,MONTH,DAY,EXCHANGE\n')
+
+            for row in source:
+                target.write(transform_row_for_output(row))
+transform_file(source_file, target_file)
+with open(target_file) as f:
+    print(f.readlines())
