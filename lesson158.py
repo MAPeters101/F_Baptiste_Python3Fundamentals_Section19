@@ -58,6 +58,14 @@ with open('test.csv') as f:
     for line in f:
         print(line.strip())
 
+print('-'*80)
+
+with open('open_not_exists.txt', 'a') as f:
+    f.write('Line 1')
+with open('open_not_exists.txt',) as f:
+    print(f.readlines())
+print('='*80)
+
 
 
 
