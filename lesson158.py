@@ -109,6 +109,28 @@ print(year, month, day)
 # print(transform_row_for_output('2015-04-03,1.0990\n'))
 # print('='*80)
 
+# def transform_row_for_output(row):
+#     row = row.strip()
+#     dt_str, rate = row.split(',')
+#     year, month, day = split_date(dt_str)
+#
+#     try:
+#         float(rate)
+#     except ValueError:
+#         return None
+#
+#     month = str(int(month))
+#     day = str(int(day))
+#     result = ','.join([year,month,day,rate])
+#     result += '\n'
+#     return result
+#
+# row = '2015-04-03,.\n'
+# result = transform_row_for_output(row)
+# print(result)
+# print(type(result))
+print('='*80)
+
 def transform_row_for_output(row):
     row = row.strip()
     dt_str, rate = row.split(',')
@@ -117,7 +139,7 @@ def transform_row_for_output(row):
     try:
         float(rate)
     except ValueError:
-        return None
+        return ''
 
     month = str(int(month))
     day = str(int(day))
