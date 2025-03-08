@@ -167,3 +167,26 @@ with open(target_file) as f:
         print(row.strip())
 print('+'*80)
 
+
+def transform_file_batch(source_file, target_file):
+    with open(source_file) as f:
+        data = f.readlines()
+    del data[0]
+    with open(target_file, 'w') as f:
+        f.write('YEAR,MONTH,DAY,EXCHANGE\n')
+        for row in data:
+            f.write(transform_row_for_output(row))
+
+with open(target_file, 'w') as f:
+    f.write('abc')
+
+with open(target_file) as f:
+    for row in f:
+        print(row.strip())
+
+transform_file_batch(source_file=source_file, target_file=target_file)
+with open(target_file) as f:
+    for row in f:
+        print(row.strip())
+print('=-'*40)
+
