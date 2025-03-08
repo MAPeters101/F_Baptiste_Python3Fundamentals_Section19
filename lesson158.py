@@ -40,7 +40,23 @@ with open('test.csv', 'w') as f:
 
 with open('test.csv') as f:
     print(f.readlines())
+print('-'*80)
+
+# with open('test.csv', 'r') as file:
+#     raise ValueError('bogus')
+# print(file.closed)
+
+with open('test.csv') as f:
+    for line in f:
+        print(line, end='')
 print()
+print()
+with open('test.csv', 'a') as f:
+    f.write('line4\n')
+    f.write('line5\n')
+with open('test.csv') as f:
+    for line in f:
+        print(line.strip())
 
 
 
