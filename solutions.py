@@ -1,6 +1,7 @@
 '''
 Question 1
-Write some code that generates a file containing containing rows containing the following data:
+Write some code that generates a file containing rows containing the following
+data:
 
 i, fibonacci_i, factorial_i, gcd_fibonacci_i_factorial_i
 where:
@@ -8,7 +9,8 @@ where:
 i: integer values from 0 to 100
 fibonacci_i: the ith Fibonacci number
 factorial_i: the factorial of i (i!)
-gcd_fib_i_fact_i: the greatest common denominator of the ith Fibonacci number and i!
+gcd_fib_i_fact_i: the greatest common denominator of the ith Fibonacci number
+and i!
 Hint: look at the math.factorial and math.gcd functions in the Python docs
 
 Also make sure to include a header row in your file.
@@ -25,7 +27,9 @@ i,fib,fact,gcd
 Solution
 Let's start by writing or importing the function's we'll need to calculate
 
-the Fibonacci numbers (I'll use the sequence 1, 1, 2, 3, 5, ... where the first number will be indexed as 0. Also, we'll use the lru_cache decorator to speed up our recursive algorithm.
+the Fibonacci numbers (I'll use the sequence 1, 1, 2, 3, 5, ... where the first
+number will be indexed as 0. Also, we'll use the lru_cache decorator to speed
+up our recursive algorithm.
 the factorial of i (using the math.factorial function)
 the greatest common denominator (using the math.gcd function)
 from functools import lru_cache
@@ -40,7 +44,8 @@ Let's call the fib function and make sure it outputs the expected results:
 
 [fib(i) for i in range(10)]
 [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-We could then generate the data we'll need to eventually write to a file as follows:
+We could then generate the data we'll need to eventually write to a file as
+follows:
 
 n = 10  # later we can change this to 100
 for i in range(n):
@@ -55,7 +60,8 @@ for i in range(n):
 7 21 5040 21
 8 34 40320 2
 9 55 362880 5
-Of course, we actually need this data as a single string that can be written to a file. To do this, we can join the string representations of each number:
+Of course, we actually need this data as a single string that can be written
+to a file. To do this, we can join the string representations of each number:
 
 n = 10  # later we can change this to 100
 for i in range(n):
@@ -72,7 +78,8 @@ for i in range(n):
 7,21,5040,21
 8,34,40320,2
 9,55,362880,5
-This works, but applying the str function to each element of data individually is not very elegant.
+This works, but applying the str function to each element of data individually
+is not very elegant.
 
 Instead we can use the map function:
 
@@ -115,12 +122,20 @@ Using the file you just generated, write three functions:
 fib
 fact
 gcd_fib_fact
-that perform the same calculations as our original fib function, the math module's factorial and the gcd of the corresponding fibonacci and factorial numbers, but uses the data that was saved in the file as a cache/lookup mechanism - i.e. just use the numbers in the file if they are available, otherwise make the calculation.
+that perform the same calculations as our original fib function, the math
+module's factorial and the gcd of the corresponding fibonacci and factorial
+numbers, but uses the data that was saved in the file as a cache/lookup
+mechanism - i.e. just use the numbers in the file if they are available,
+otherwise make the calculation.
 
 Solution
-The easiest approach will probably be to load up the data form the file and store it some lists that we can easily lookup.
+The easiest approach will probably be to load up the data form the file and
+store it some lists that we can easily lookup.
 
-We could do this inside each function we are going to create, but here I'm going to load up the data into our notebook, and pass the relevant data to each function - this avoids re-loading the data form file each time the function is called.
+We could do this inside each function we are going to create, but here I'm
+going to load up the data into our notebook, and pass the relevant data to
+each function - this avoids re-loading the data form file each time the
+function is called.
 
 with open(file_name) as f:
     next(f)  # skip header row
@@ -658,7 +673,9 @@ with open(file_name) as f:
         data.append(list(map(int, row.strip().split(','))))
 
 print(data[:10])
-[[0, 1, 1, 1], [1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 6, 3], [4, 5, 24, 1], [5, 8, 120, 8], [6, 13, 720, 1], [7, 21, 5040, 21], [8, 34, 40320, 2], [9, 55, 362880, 5]]
+[[0, 1, 1, 1], [1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 6, 3], [4, 5, 24, 1],
+[5, 8, 120, 8], [6, 13, 720, 1], [7, 21, 5040, 21], [8, 34, 40320, 2],
+[9, 55, 362880, 5]]
 But, we can also just use a comprehension:
 
 with open(file_name) as f:
@@ -666,8 +683,11 @@ with open(file_name) as f:
     data = [list(map(int, row.strip().split(','))) for row in f]
 
 print(data[:10])
-[[0, 1, 1, 1], [1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 6, 3], [4, 5, 24, 1], [5, 8, 120, 8], [6, 13, 720, 1], [7, 21, 5040, 21], [8, 34, 40320, 2], [9, 55, 362880, 5]]
-Now that we have our pre-calculated data, let's create individual sequences for Fibonacci, factorial and gcd numbers:
+[[0, 1, 1, 1], [1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 6, 3], [4, 5, 24, 1],
+[5, 8, 120, 8], [6, 13, 720, 1], [7, 21, 5040, 21], [8, 34, 40320, 2],
+[9, 55, 362880, 5]]
+Now that we have our pre-calculated data, let's create individual sequences
+for Fibonacci, factorial and gcd numbers:
 
 fib_stored = [row[1] for row in data]
 fact_stored = [row[2] for row in data]
@@ -715,7 +735,9 @@ fib(101)
 looking up in cache...
 looking up in cache...
 927372692193078999176
-You'll notice that to calculate fib(101) required calculating fib(100) + fib(99), which were both in our loaded data - hence why we see two looking up fib in cache... prints in our output.
+You'll notice that to calculate fib(101) required calculating fib(100) +
+fib(99), which were both in our loaded data - hence why we see two looking up
+fib in cache... prints in our output.
 
 Finally, we can process gcd in the same way:
 
@@ -730,5 +752,4 @@ Looking up gcd in cache...
 144
 gcd_fib_fact(101)
 8
-
 '''
