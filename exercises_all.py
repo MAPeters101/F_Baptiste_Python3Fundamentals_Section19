@@ -1,6 +1,6 @@
 '''
 Question 1
-Write some code that generates a file containing containing rows containing
+Write some code that generates a file containing rows containing
 the following data:
 
 i, fibonacci_i, factorial_i, gcd_fibonacci_i_factorial_i
